@@ -1,7 +1,11 @@
 <header class="header"></header>
 
 <main class="main">
-  <div class="main__wrapper" *ngIf="weatherData">
+  <div *ngIf="isError">Prišlo je do napake</div>
+
+  <div *ngIf="!weatherData && !isError" class="loader"></div>
+
+  <div class="main__wrapper" *ngIf="weatherData && !isError">
     <div class="weather">
       <span>Maribor</span>
       <span>pridobljeno {{ currentDate }}</span>
