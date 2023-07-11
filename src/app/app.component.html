@@ -1,10 +1,10 @@
 <header class="header"></header>
 
 <main class="main">
-  <div class="main__wrapper">
+  <div class="main__wrapper" *ngIf="weatherData">
     <div class="weather">
       <span>Maribor</span>
-      <span>pridobljeno 11.7.2023</span>
+      <span>pridobljeno {{ currentDate }}</span>
     </div>
     <div class="info">
       <span class="info__text">Trenutna temperatura</span>
@@ -13,25 +13,21 @@
     </div>
     <div class="temp">
       <div class="temp__row">
-        <span class="temp__text">13° </span>
-        <span class="temp__text">13° </span>
-        <span class="temp__text">13° </span>
-        <span class="temp__text">13° </span>
-        <span class="temp__text">13° </span>
+        <span *ngFor="let temp of weatherData" class="temp__text"
+          >{{ getTempInCelsius(temp.main.temp) | number : "1.0-0" }}°
+        </span>
       </div>
       <div class="temp__row">
-        <span class="temp__text">blah </span>
-        <span class="temp__text">blah </span>
-        <span class="temp__text">blah </span>
-        <span class="temp__text">blah </span>
-        <span class="temp__text">blah </span>
+        <span *ngFor="let temp of weatherData" class="temp__text"
+          >{{ temp.weather[0].description }}
+        </span>
       </div>
       <div class="temp__row">
-        <span class="temp__text">10°/18° </span>
-        <span class="temp__text">10°/18° </span>
-        <span class="temp__text">10°/18° </span>
-        <span class="temp__text">10°/18° </span>
-        <span class="temp__text">10°/18° </span>
+        <span *ngFor="let temp of weatherData" class="temp__text"
+          >{{ getTempInCelsius(temp.main.temp_min) | number : "1.0-0" }}°/{{
+            getTempInCelsius(temp.main.temp_max) | number : "1.0-0"
+          }}°
+        </span>
       </div>
     </div>
   </div>
