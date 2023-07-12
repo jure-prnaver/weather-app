@@ -10,9 +10,11 @@ import { environment } from '../environments/environment';
 export class WeatherService {
   constructor(private http: HttpClient) {}
 
-  getWeatherData(): Observable<WeatherData> {
+  getWeatherData(lang?: string): Observable<WeatherData> {
     return this.http.get<WeatherData>(
-      `https://api.openweathermap.org/data/2.5/forecast?q=maribor&appid=${environment.weatherApiKey}&lang=sl`
+      `https://api.openweathermap.org/data/2.5/forecast?q=maribor&appid=${
+        environment.weatherApiKey
+      }&lang=${lang ?? 'sl'}`
     );
   }
 }

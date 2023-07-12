@@ -1,19 +1,31 @@
-<header class="header"></header>
+<header class="header">
+  <span class="header__title">{{ "title" | translate }}</span>
+  <select #langSelect (change)="translate.use(langSelect.value)">
+    <option
+      *ngFor="let lang of translate.getLangs()"
+      [value]="lang"
+      [selected]="lang === translate.currentLang"
+      (click)="getData()"
+    >
+      {{ lang }}
+    </option>
+  </select>
+</header>
 
 <main class="main">
-  <div *ngIf="isError">Prišlo je do napake</div>
+  <div *ngIf="isError">{{ "error" | translate }}</div>
 
   <div *ngIf="!weatherData && !isError" class="loader"></div>
 
   <div class="main__wrapper" *ngIf="weatherData && !isError">
     <div class="weather">
       <span>Maribor</span>
-      <span>pridobljeno {{ currentDate }}</span>
+      <span>{{ "acquired" | translate }} {{ currentDate }}</span>
     </div>
     <div class="info">
-      <span class="info__text">Trenutna temperatura</span>
-      <span class="info__text">Opis</span>
-      <span class="info__text">Min/max</span>
+      <span class="info__text">{{ "info.current" | translate }}</span>
+      <span class="info__text">{{ "info.description" | translate }}</span>
+      <span class="info__text">{{ "info.range" | translate }}</span>
     </div>
     <div class="temp">
       <div class="temp__row">
