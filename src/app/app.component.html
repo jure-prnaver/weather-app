@@ -1,5 +1,8 @@
 <header class="header">
   <span class="header__title">{{ "title" | translate }}</span>
+  <button (click)="getData()" class="refresh">
+    {{ "refresh" | translate }}
+  </button>
   <select #langSelect (change)="translate.use(langSelect.value)">
     <option
       *ngFor="let lang of translate.getLangs()"
@@ -20,7 +23,7 @@
   <div class="main__wrapper" *ngIf="weatherData && !isError">
     <div class="weather">
       <span>Maribor</span>
-      <span>{{ "acquired" | translate }} {{ currentDate }}</span>
+      <span>{{ "acquired" | translate }} {{ currentDate() }}</span>
     </div>
     <div class="info">
       <span class="info__text">{{ "info.current" | translate }}</span>

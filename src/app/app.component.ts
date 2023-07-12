@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './services/weather.service';
-import { List, WeatherData } from './models/weather.model';
+import { List } from './models/weather.model';
 import * as moment from 'moment';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   weatherData?: List[];
   isLoading?: boolean;
   isError?: boolean;
-  currentDate = moment().format(`DD.MM.YYYY, HH:mm`);
+  currentDate = () => moment().format(`DD.MM.YYYY, HH:mm`);
 
   getTempInCelsius = (temp: number) => temp - 274.15;
 
@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
       next: (response) => {
         this.weatherData = response.list;
         this.isLoading = false;
+        this.currentDate();
       },
       error: () => {
         this.isError = true;

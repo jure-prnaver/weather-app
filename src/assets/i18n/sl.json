@@ -7,5 +7,6 @@
     "description": "Opis",
     "range": "Min/Max"
   },
+  "refresh": "Osveži",
   "title": "Vreme"
 }
