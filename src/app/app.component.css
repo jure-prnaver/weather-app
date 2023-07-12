@@ -86,7 +86,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (min-height: 768px) {
   .header {
     height: 56px;
   }
