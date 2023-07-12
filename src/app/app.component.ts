@@ -3,6 +3,7 @@ import { WeatherService } from './services/weather.service';
 import { List } from './models/weather.model';
 import * as moment from 'moment';
 import { TranslateService } from '@ngx-translate/core';
+import { fromEvent, throttle, interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,10 @@ export class AppComponent implements OnInit {
   isError?: boolean;
   currentDate = () => moment().format(`DD.MM.YYYY, HH:mm`);
 
+  throttleGetData = fromEvent(document, 'click').pipe(
+    throttle(() => interval(1000))
+  );
+
   getTempInCelsius = (temp: number) => temp - 274.15;
 
   getData() {
@@ -42,5 +47,13 @@ export class AppComponent implements OnInit {
     this.isLoading = true;
     this.isError = false;
     this.getData();
+    this.throttleGetData.subscribe((event) => {
+      if (
+        event.target instanceof Element &&
+        event.target.className === 'refresh'
+      ) {
+        this.getData();
+      }
+    });
   }
 }

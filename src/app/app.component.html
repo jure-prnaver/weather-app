@@ -1,6 +1,6 @@
 <header class="header">
   <span class="header__title">{{ "title" | translate }}</span>
-  <button (click)="getData()" class="refresh">
+  <button (click)="(throttleGetData)" class="refresh">
     {{ "refresh" | translate }}
   </button>
   <select #langSelect (change)="translate.use(langSelect.value)">
