@@ -38,7 +38,7 @@
     "info"
     "temp";
   padding: 16px;
-  gap: 16px;
+  row-gap: 16px;
 }
 
 .main {
@@ -81,13 +81,16 @@
     grid-template-areas:
       "weather weather"
       "info temp";
-    padding: 32px;
   }
 }
 
 @media (min-width: 768px) {
   .header {
     height: 56px;
+  }
+
+  .main__wrapper {
+    padding: 32px;
   }
 
   .main {
