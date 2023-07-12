@@ -26,22 +26,20 @@
       <span>{{ "acquired" | translate }} {{ currentDate() }}</span>
     </div>
     <div class="info">
-      <span class="info__text">{{ "info.current" | translate }}</span>
-      <span class="info__text">{{ "info.description" | translate }}</span>
-      <span class="info__text">{{ "info.range" | translate }}</span>
-    </div>
-    <div class="temp">
-      <div class="temp__row">
+      <span class="info__title">{{ "info.current" | translate }}</span>
+      <div>
         <span *ngFor="let temp of weatherData" class="temp__text"
           >{{ getTempInCelsius(temp.main.temp) | number : "1.0-0" }}°
         </span>
       </div>
-      <div class="temp__row">
+      <span class="info__title">{{ "info.description" | translate }}</span>
+      <div>
         <span *ngFor="let temp of weatherData" class="temp__text"
           >{{ temp.weather[0].description }}
         </span>
       </div>
-      <div class="temp__row">
+      <span class="info__title">{{ "info.range" | translate }}</span>
+      <div>
         <span *ngFor="let temp of weatherData" class="temp__text"
           >{{ getTempInCelsius(temp.main.temp_min) | number : "1.0-0" }}°/{{
             getTempInCelsius(temp.main.temp_max) | number : "1.0-0"
