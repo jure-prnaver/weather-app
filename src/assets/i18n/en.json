@@ -1,0 +1,12 @@
+{
+  "acquired": "acquired",
+  "at": "at",
+  "error": "There was an error",
+  "info": {
+    "current": "Current temperature",
+    "description": "Description",
+    "range": "Min/Max"
+  },
+  "refresh": "Refresh",
+  "title": "Weather"
+}

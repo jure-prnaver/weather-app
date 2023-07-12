@@ -1,0 +1,123 @@
+.header {
+  height: 44px;
+  background-color: var(--primary-color);
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 16px;
+}
+
+.header__title {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: var(--background-base);
+}
+
+.refresh {
+  background-color: transparent;
+  border: 1px solid var(--button-primary);
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin-right: 10px;
+  margin-left: auto;
+  cursor: pointer;
+  color: var(--button-primary);
+}
+
+.refresh:hover {
+  color: var(--button-secondary);
+  border-color: var(--button-secondary);
+}
+
+.main__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.main {
+  background-color: var(--background-base);
+  min-height: calc(100dvh - 44px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather {
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+}
+
+.weather,
+.main__wrapper {
+  max-width: 320px;
+}
+
+.info__title {
+  font-weight: bold;
+}
+
+.info {
+  word-wrap: break-word;
+}
+
+@media (max-width: 319px) {
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info__title:not(:first-of-type) {
+    margin-top: 16px;
+  }
+}
+
+@media (min-width: 320px) {
+  .info {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 16px;
+  }
+}
+
+@media (min-width: 768px) and (min-height: 768px) {
+  .header {
+    height: 56px;
+  }
+
+  .main__wrapper {
+    padding: 32px;
+  }
+
+  .main {
+    min-height: calc(100dvh - 56px);
+  }
+
+  .weather,
+  .main__wrapper {
+    max-width: 460px;
+  }
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, var(--primary-color) 94%, #0000)
+      top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, var(--primary-color));
+  mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: spinner 1s infinite linear;
+}
+
+@keyframes spinner {
+  100% {
+    transform: rotate(1turn);
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "acquired": "pridobljeno",
+  "at": "ob",
+  "error": "Prišlo je do napake",
+  "info": {
+    "current": "Trenutna temperatura",
+    "description": "Opis",
+    "range": "Min/Max"
+  },
+  "refresh": "Osveži",
+  "title": "Vreme"
+}
